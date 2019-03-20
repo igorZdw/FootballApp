@@ -1,0 +1,53 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>FootballerList</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}" />
+
+    <script th:src="@{/webjars/jquery/3.2.1/jquery.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/3.3.7/js/bootstrap.min.js}"></script>
+</head>
+<body>
+
+<div class="container">
+
+
+    Premia dla klubu  postawione cele <span th:text="${bonus.bonus}"/>
+    <a th:href="${'/checkTargets'}">Aktualizuj postawiony cel</a>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <td><b>Imie piłkarza</b></td>
+            <td><b>Nazwisko piłkarza</b> </td>
+            <td><b>Wiek piłkarza</b></td>
+            <td><b>Cel</b></td>
+            <td></td>
+        </tr>
+        </thead>
+        <tbody th:each=" footballer : ${footballers}">
+        <tr>
+            <td th:text="${footballer.name}"></td>
+            <td th:text="${footballer.surname}"></td>
+            <td th:text="${footballer.age}"></td>
+            <td>
+                <span th:if="${footballer.target==null}">Brak aktualnego celu na mecz <a th:href="${'/assignTarget?footballerId='+footballer.id}">Przypisz cel na mecz</a></span>
+                <span th:if="${footballer.target!=null}" th:text="${footballer.target.description}"/>
+            </td>
+            <td><a th:href="${'/footballer?id='+footballer.id}">Podglad</a></td>
+            <td><a th:href="${'/footballer/delete/'+footballer.id}">Usun</a></td>
+        </tr>
+        </tbody>
+    </table>
+    <div class="row">
+        <a href="/newFootballer">Powrót do dodawania piłkarzy</a>
+    </div>
+    <div class="row">
+        <form action="#" th:action="@{/logout}" method="post">
+            <input type="submit" value="Logout"/>
+        </form>
+    </div>
+</div>
+</body>
+</html>

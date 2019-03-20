@@ -1,0 +1,46 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Add Footballer</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}" />
+
+    <script th:src="@{/webjars/jquery/3.2.1/jquery.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/3.3.7/js/bootstrap.min.js}"></script>
+</head>
+<body>
+<div class="container">
+
+    Premia za postawiony cel <span th:text="${bonus.bonus}"/>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <td><b>Imie piłkarza</b></td>
+            <td><b>Nazwisko piłkarza</b> </td>
+            <td><b>Wiek piłkarza</b></td>
+            <td><b>Pozycja</b></td>
+            <td><b>Pensja</b></td>
+            <td><b>Kraj pochodzenia</b></td>
+            <td><b>Aktualny klub</b></td>
+            <td></td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td th:text="${footballer.name}"></td>
+            <td th:text="${footballer.surname}"></td>
+            <td th:text="${footballer.age}"></td>
+            <td th:text="${footballer.position}"></td>
+            <td th:text="${footballer.salary}"></td>
+            <td th:text="${footballer.country}"></td>
+            <td th:text="${footballer.club}"></td>
+            </tr>
+            </tbody>
+    </table>
+
+
+</div>
+</body>
+</html>
